@@ -27,7 +27,7 @@ async function writeFile(filePath, content, callback) {
 async function readFileAndCount(word, callback) {
   const path = process.argv[2];
   let count = 0;
-  if (!path) {
+  if (!path || path === undefined) {
     callback(new Error("No se ha especificado el path del archivo"));
   }
   if (!word) {
@@ -36,11 +36,10 @@ async function readFileAndCount(word, callback) {
 
   fs.readFile(path, "utf-8", (err, data) => {
     if (err) {
-      callback(null, 0);
-      return;
+      return callback(null, 0);
     }
-    count = data.toString().split(word).length - 1;
-    callback(null, count);
+    count = data.split(word).length - 1;
+    return callback(null, count);
   });
 }
 
