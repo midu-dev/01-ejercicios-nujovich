@@ -1,9 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const filePath = process.argv[2];
-const content = process.argv[3];
-
 // Ejercicio 2
 async function writeFile(filePath, content, callback) {
   const dir = path.dirname(filePath);
