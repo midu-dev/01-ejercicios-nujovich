@@ -40,7 +40,6 @@ async function readFileAndCount(word, callback) {
     }
     count += data.split(word).length - 1;
     callback(null, count);
-    return;
   });
 }
 
